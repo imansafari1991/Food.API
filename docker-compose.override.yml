@@ -7,8 +7,8 @@ services:
     ports:
       - "6001:80"
     volumes:
-      - /data/files/upload/product:/var/product
-      - /data/files/upload/slider:/var/slider
+      - /data/Food.API/Food.API/upload/products:/app/wwwroot/upload/products
+      - /data/Food.API/Food.API/upload/sliders:/app/wwwroot/upload/sliders
   fooddb:
     container_name: fooddb
     environment:
