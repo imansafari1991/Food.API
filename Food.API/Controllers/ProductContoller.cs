@@ -59,7 +59,7 @@ namespace Food.API.Controllers
             }
 
             await _productRopsitory.AddAsync(product, cancellationToken, true);
-            return Ok();
+            return Ok(product.Id);
 
         }
 

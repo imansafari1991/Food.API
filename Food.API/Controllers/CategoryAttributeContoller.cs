@@ -41,7 +41,7 @@ namespace Food.API.Controllers
             category.Id = Guid.NewGuid();
 
             await _categoryAttributeRepository.AddAsync(category, cancellationToken, true);
-            return Ok();
+            return Ok(category.Id);
 
         }
 

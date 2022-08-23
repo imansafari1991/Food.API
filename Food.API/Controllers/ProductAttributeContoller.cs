@@ -41,7 +41,7 @@ namespace Food.API.Controllers
             var productAttribute = _mapper.Map<ProductAttribute>(dto);
             productAttribute.Id = Guid.NewGuid();
             await _productAttributeRepository.AddAsync(productAttribute, cancellationToken, true);
-            return Ok();
+            return Ok(productAttribute.Id);
 
         }
 

@@ -51,7 +51,7 @@ namespace Food.API.Controllers
 
 
             await _sliderRopsitory.AddAsync(slider, cancellationToken, true);
-            return Ok();
+            return Ok(slider.Id);
 
         }
 

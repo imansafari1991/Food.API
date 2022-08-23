@@ -41,7 +41,7 @@ namespace Food.API.Controllers
             slider.Id = Guid.NewGuid();
 
             await _sliderAttributeRepository.AddAsync(slider, cancellationToken, true);
-            return Ok();
+            return Ok(slider.Id);
 
         }
 
