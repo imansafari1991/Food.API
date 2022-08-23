@@ -5,7 +5,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
-      - "6000:80"
+      - "6001:80"
+    volumes:
+      - /data/files/upload/product:/var/product
+      - /data/files/upload/slider:/var/slider
   fooddb:
     container_name: fooddb
     environment:
