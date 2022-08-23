@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  food.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "6000:80"
+  fooddb:
+    container_name: fooddb
+    environment:
+       - POSTGRES_USER=admin
+       - POSTGRES_PASSWORD=admin1234
+    restart: always
+    ports:
+      - "5436:5432"
+    volumes:
+      - /data/db:/var/lib/postgresql/data2/

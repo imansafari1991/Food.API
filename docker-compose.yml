@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  food.api:
+    image: ${DOCKER_REGISTRY-}foodapi
+    build:
+      context: .
+      dockerfile: Food.API/Dockerfile
+  fooddb:
+    image: postgres:14.2  
