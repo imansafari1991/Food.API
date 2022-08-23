@@ -74,7 +74,7 @@ namespace Food.API.Controllers
                 return NotFound();
             }
 
-            _mapper.Map(lastProduct, dto);
+            _mapper.Map(dto,lastProduct);
             //if (dto.File == null)
             //{
             //    lastProduct.ImageUrl = await _fileService.UploadFile(dto.File, "Product");

@@ -66,7 +66,7 @@ namespace Food.API.Controllers
                 return NotFound();
             }
 
-            _mapper.Map(lastSlider, dto);
+            _mapper.Map(dto, lastSlider);
             if (dto.File != null)
             {
                 lastSlider.ImageUrl = await _fileService.UploadFile(dto.File, "Slider");

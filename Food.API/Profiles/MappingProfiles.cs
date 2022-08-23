@@ -21,7 +21,7 @@ public class MappingProfiles : Profile
 
         CreateMap<ProductAttributeReqDto, ProductAttribute>();
         CreateMap<CategoryAttributeReqDto, CategoryAttribute>();
-        CreateMap<SliderReqDto, Slider>();
+        CreateMap<SliderReqDto, Slider>().ReverseMap();
         CreateMap<SliderAttributeReqDto, SliderAttribute>();
 
 

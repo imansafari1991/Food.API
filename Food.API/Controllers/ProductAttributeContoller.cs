@@ -58,7 +58,7 @@ namespace Food.API.Controllers
             }
 
 
-            _mapper.Map(lastProductAttribute, dto);
+            _mapper.Map(dto, lastProductAttribute);
             lastProductAttribute.ModifiedDateTime = DateTime.UtcNow;
 
 
