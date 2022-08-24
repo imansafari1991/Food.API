@@ -21,19 +21,21 @@ namespace Food.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<SliderAttribute>>> Get()
+        public async Task<ActionResult<List<SliderAttributeResDto>>> Get()
         {
 
             var res = await _sliderAttributeRepository.TableNoTracking.Include(p => p.Slider).ToListAsync();
 
-            return Ok(res);
+            return Ok(_mapper.Map<List<SliderAttributeResDto>>(res));
         }
 
         // GET api/<SliderAttributeContoller>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SliderAttribute>> Get(Guid id)
+        public async Task<ActionResult<SliderAttributeResDto>> Get(Guid id)
         {
-            return Ok(await _sliderAttributeRepository.TableNoTracking.Include(p=>p.Slider).Include(p=>p.Language).FirstOrDefaultAsync(p => p.Id == id));
+            var res = await _sliderAttributeRepository.TableNoTracking.Include(p => p.Slider).Include(p => p.Language)
+                .FirstOrDefaultAsync(p => p.Id == id);
+            return Ok(_mapper.Map<SliderAttributeResDto>(res));
         }
 
         // POST api/<SliderAttributeContoller>

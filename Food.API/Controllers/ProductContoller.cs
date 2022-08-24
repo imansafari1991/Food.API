@@ -24,18 +24,21 @@ namespace Food.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get()
+        public async Task<ActionResult<List<ProductResDto>>> Get()
         {
-            return Ok(await _productRopsitory.TableNoTracking.ToListAsync());
+
+            var res = await _productRopsitory.TableNoTracking.Include(p=>p.ProductImages).ToListAsync();
+            return Ok(_mapper.Map<List<ProductResDto>>(res));
         }
 
         // GET api/<ProductContoller>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> Get(Guid id)
+        public async Task<ActionResult<ProductResDto>> Get(Guid id)
         {
+            var res = await _productRopsitory.TableNoTracking.Include(p => p.ProductImages)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
-
-            return Ok(await _productRopsitory.TableNoTracking.Include(p=>p.ProductImages).FirstOrDefaultAsync(p => p.Id == id));
+            return Ok(_mapper.Map<ProductResDto>(res));
         }
 
         // POST api/<ProductContoller>
