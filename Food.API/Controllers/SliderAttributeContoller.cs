@@ -23,7 +23,10 @@ namespace Food.API.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SliderAttribute>>> Get()
         {
-            return Ok(await _sliderAttributeRepository.TableNoTracking.Include(p => p.Slider).ToListAsync());
+
+            var res = await _sliderAttributeRepository.TableNoTracking.Include(p => p.Slider).ToListAsync();
+
+            return Ok(res);
         }
 
         // GET api/<SliderAttributeContoller>/5
