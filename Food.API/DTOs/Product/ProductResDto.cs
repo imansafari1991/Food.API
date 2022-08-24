@@ -13,5 +13,6 @@ public class ProductResDto
     public string Title { get; set; }
     public bool IsActive { get; set; }
     public Guid CategoryId { get; set; }
+    public bool IsPopular { get; set; }
     public List<ProductImageResDto> ProductImages { get; set; }
 }
