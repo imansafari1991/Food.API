@@ -1,4 +1,6 @@
 ﻿using Food.API.Data.Intefaces;
+using Food.API.DTOs;
+using Food.API.DTOs.ProductImage;
 using Food.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,7 +47,23 @@ namespace Food.API.Controllers
         [Route("Product/GetAllPopulars")]
         public async Task<IActionResult> GetAllPopulars()
         {
-            return Ok(await _productRepository.TableNoTracking.Where(p => p.IsActive &&p.IsPopular).ToListAsync());
+
+
+
+
+             var res=await _productRepository.TableNoTracking.Where(cc => cc.ProductAttributes.Where(p=>p.LanguageId==_rLangId).Any() && cc.IsPopular &&cc.IsActive)
+                 .Select(cp => new
+                ProductResDto
+            {
+                Title = cp.ProductAttributes.First().Title,
+                Description = cp.ProductAttributes.First().Description,
+                Price = cp.ProductAttributes.First().Price,
+                Id = cp.Id,
+                ProductImages = cp.ProductImages.Select(p => new ProductImageResDto() { ImageUrl = p.ImageUrl, Id = p.Id, ProductId = p.ProductId }).ToList()
+            }).ToListAsync();
+
+
+             return Ok(res);
         }
         // GET api/<PublicApiController>/5
         [HttpGet("{id}")]

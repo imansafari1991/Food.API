@@ -9,5 +9,5 @@ public class ProductAttributeReqDto
     public int Price { get; set; }
     public Guid ProductId { get; set; }
     public int LanguageId { get; set; }
-    public int PriceUnitId { get; set; }
+    
 }
